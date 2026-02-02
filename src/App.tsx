@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Header from "./components/Header.tsx";
 import FrontPage from "./components/FrontPage.tsx";
 import SavedPage from "./components/SavedPage.tsx";
-import useJokes from "./hooks/useJokes.tsx";
+import { useJokes } from "./hooks/useJokes";
 
 export default function App() {
 	const [jokes, saveJoke] = useJokes();

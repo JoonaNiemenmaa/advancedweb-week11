@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IJoke } from "../components/Joke";
 
-export default function useJokes(): [IJoke[], (joke: IJoke) => void] {
+export function useJokes(): [IJoke[], (joke: IJoke) => void] {
 	const [jokes, setJokes] = useState<IJoke[]>([]);
 
 	function saveJoke(joke: IJoke) {
