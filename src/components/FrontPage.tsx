@@ -5,18 +5,16 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 import Joke from "./Joke";
-import { JokeProps } from "./Joke";
+import { IJoke } from "./Joke";
 
-interface IResponse {
-	id: number;
-	setup: string;
-	punchline: string;
-	type: string;
+interface IFrontPageProps {
+	jokes?: IJoke[];
+	saveJoke?(joke: IJoke): void;
 }
 
-export default function FrontPage() {
+export default function FrontPage(props: IFrontPageProps) {
 	const [loading, setLoading] = useState<boolean>(false);
-	const [joke, setJoke] = useState<JokeProps>({
+	const [joke, setJoke] = useState<IJoke>({
 		id: 0,
 		setup: "no joke",
 		punchline: "very sad :(",
@@ -35,7 +33,7 @@ export default function FrontPage() {
 					try {
 						const response = await fetch(url);
 
-						const json: IResponse = await response.json();
+						const json: IJoke = await response.json();
 
 						setJoke({
 							id: json.id,
@@ -50,6 +48,16 @@ export default function FrontPage() {
 				}}
 			>
 				Get Joke
+			</Button>
+			<Button
+				variant="contained"
+				onClick={() => {
+					if (props.saveJoke) {
+						props.saveJoke(joke);
+					}
+				}}
+			>
+				Save joke
 			</Button>
 			{loading ? (
 				<Typography variant="caption">Loading a joke...</Typography>
