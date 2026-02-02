@@ -32,19 +32,20 @@ export default function FrontPage() {
 					const url =
 						"https://official-joke-api.appspot.com/random_joke";
 					setLoading(true);
-					await fetch(url)
-						.then((response) => {
-							return response.json();
-						})
-						.then((json: IResponse) => {
-							setJoke({
-								id: json.id,
-								setup: json.setup,
-								punchline: json.punchline,
-								type: json.type,
-							});
-						});
+					try {
+						const response = await fetch(url);
 
+						const json: IResponse = await response.json();
+
+						setJoke({
+							id: json.id,
+							setup: json.setup,
+							punchline: json.punchline,
+							type: json.type,
+						});
+					} catch (error) {
+						console.error(error);
+					}
 					setLoading(false);
 				}}
 			>
