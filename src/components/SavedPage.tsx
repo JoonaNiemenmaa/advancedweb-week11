@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Joke from "./Joke";
 import { IJoke } from "./Joke";
 
@@ -12,5 +12,13 @@ export default function SavedPage(props: ISavedPageProps) {
 		return <Joke joke={joke} deleteJoke={props.deleteJoke}></Joke>;
 	});
 
-	return <Box>{jokes}</Box>;
+	return (
+		<Box>
+			{props.savedJokes.length > 0 ? (
+				jokes
+			) : (
+				<Typography variant="h3">No saved jokes yet.</Typography>
+			)}
+		</Box>
+	);
 }
