@@ -48,7 +48,7 @@ export default function FrontPage() {
 					setLoading(false);
 				}}
 			>
-				Get joke
+				Get Joke
 			</Button>
 			{loading ? (
 				<Typography variant="caption">Loading a joke...</Typography>
