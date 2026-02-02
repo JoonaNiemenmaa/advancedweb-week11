@@ -8,7 +8,7 @@ import SavedPage from "./components/SavedPage.tsx";
 import { useJokes } from "./hooks/useJokes";
 
 export default function App() {
-	const [jokes, saveJoke] = useJokes();
+	const jokes = useJokes();
 	return (
 		<BrowserRouter>
 			<Header></Header>
@@ -17,14 +17,14 @@ export default function App() {
 					path="/"
 					element={
 						<FrontPage
-							jokes={jokes}
-							saveJoke={saveJoke}
+							jokes={jokes.savedJokes}
+							saveJoke={jokes.saveJoke}
 						></FrontPage>
 					}
 				/>
 				<Route
 					path="/saved"
-					element={<SavedPage jokes={jokes}></SavedPage>}
+					element={<SavedPage jokes={jokes.savedJokes}></SavedPage>}
 				/>
 			</Routes>
 		</BrowserRouter>

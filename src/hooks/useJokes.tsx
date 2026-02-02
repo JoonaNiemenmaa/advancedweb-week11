@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { IJoke } from "../components/Joke";
 
-export function useJokes(): [IJoke[], (joke: IJoke) => void] {
+interface UseJokes {
+	savedJokes: IJoke[];
+	saveJoke(joke: IJoke): void;
+	deleteJoke(id: number): void;
+}
+
+export function useJokes(): UseJokes {
 	const [jokes, setJokes] = useState<IJoke[]>([]);
 
 	function saveJoke(joke: IJoke) {
@@ -11,5 +17,15 @@ export function useJokes(): [IJoke[], (joke: IJoke) => void] {
 		console.log(newJokes);
 	}
 
-	return [jokes, saveJoke];
+	function deleteJoke(id: number) {
+		const newJokes = jokes.filter((joke) => joke.id === id);
+		setJokes(newJokes);
+		console.log(newJokes);
+	}
+
+	return {
+		savedJokes: jokes,
+		saveJoke: saveJoke,
+		deleteJoke: deleteJoke,
+	};
 }
