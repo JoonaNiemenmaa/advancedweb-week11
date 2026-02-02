@@ -26,7 +26,7 @@ export default function App() {
 					path="/saved"
 					element={
 						<SavedPage
-							jokes={jokes.savedJokes}
+							savedJokes={jokes.savedJokes}
 							deleteJoke={jokes.deleteJoke}
 						></SavedPage>
 					}
