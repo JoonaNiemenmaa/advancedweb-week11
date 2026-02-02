@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { IJoke } from "./Joke";
 
 interface IFrontPageProps {
-	jokes?: IJoke[];
+	savedJokes?: IJoke[];
 	saveJoke?(joke: IJoke): void;
 }
 

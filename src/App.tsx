@@ -17,7 +17,7 @@ export default function App() {
 					path="/"
 					element={
 						<FrontPage
-							jokes={jokes.savedJokes}
+							savedJokes={jokes.savedJokes}
 							saveJoke={jokes.saveJoke}
 						></FrontPage>
 					}
