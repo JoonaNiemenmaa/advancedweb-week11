@@ -22,7 +22,10 @@ export default function App() {
 						></FrontPage>
 					}
 				/>
-				<Route path="/saved" element={<SavedPage></SavedPage>} />
+				<Route
+					path="/saved"
+					element={<SavedPage jokes={jokes}></SavedPage>}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);
