@@ -24,7 +24,12 @@ export default function App() {
 				/>
 				<Route
 					path="/saved"
-					element={<SavedPage jokes={jokes.savedJokes}></SavedPage>}
+					element={
+						<SavedPage
+							jokes={jokes.savedJokes}
+							deleteJoke={jokes.deleteJoke}
+						></SavedPage>
+					}
 				/>
 			</Routes>
 		</BrowserRouter>

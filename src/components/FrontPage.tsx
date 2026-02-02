@@ -1,10 +1,10 @@
 import { useState } from "react";
 
+import { Card, CardContent } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import Joke from "./Joke";
 import { IJoke } from "./Joke";
 
 interface IFrontPageProps {
@@ -62,12 +62,12 @@ export default function FrontPage(props: IFrontPageProps) {
 			{loading ? (
 				<Typography variant="caption">Loading a joke...</Typography>
 			) : (
-				<Joke
-					id={joke.id}
-					setup={joke.setup}
-					punchline={joke.punchline}
-					type={joke.type}
-				></Joke>
+				<Card key={joke.id}>
+					<CardContent>
+						<Typography>{joke.setup}</Typography>
+						<Typography>{joke.punchline}</Typography>
+					</CardContent>
+				</Card>
 			)}
 		</Box>
 	);

@@ -18,7 +18,7 @@ export function useJokes(): UseJokes {
 	}
 
 	function deleteJoke(id: number) {
-		const newJokes = jokes.filter((joke) => joke.id === id);
+		const newJokes = jokes.filter((joke) => joke.id !== id);
 		setJokes(newJokes);
 		console.log(newJokes);
 	}

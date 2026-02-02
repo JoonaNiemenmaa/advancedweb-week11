@@ -4,18 +4,12 @@ import { IJoke } from "./Joke";
 
 interface ISavedPageProps {
 	jokes: IJoke[];
+	deleteJoke(id: number): void;
 }
 
 export default function SavedPage(props: ISavedPageProps) {
 	const jokes = props.jokes.map((joke) => {
-		return (
-			<Joke
-				id={joke.id}
-				setup={joke.setup}
-				punchline={joke.punchline}
-				type={joke.type}
-			></Joke>
-		);
+		return <Joke joke={joke} deleteJoke={props.deleteJoke}></Joke>;
 	});
 
 	return <Box>{jokes}</Box>;

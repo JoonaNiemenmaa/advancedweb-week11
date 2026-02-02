@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
 
 export interface IJoke {
 	id: number;
@@ -9,12 +10,25 @@ export interface IJoke {
 	punchline: string;
 }
 
-export default function Joke(props: IJoke) {
+interface Props {
+	joke: IJoke;
+	deleteJoke(id: number): void;
+}
+
+export default function Joke(props: Props) {
 	return (
-		<Card key={props.id}>
+		<Card key={props.joke.id}>
 			<CardContent>
-				<Typography>{props.setup}</Typography>
-				<Typography>{props.punchline}</Typography>
+				<Typography>{props.joke.setup}</Typography>
+				<Typography>{props.joke.punchline}</Typography>
+				<Button
+					variant="text"
+					onClick={() => {
+						props.deleteJoke(props.joke.id);
+					}}
+				>
+					Delete
+				</Button>
 			</CardContent>
 		</Card>
 	);
